@@ -3,8 +3,8 @@ const emoji = require(`remark-emoji`)
 
 module.exports = {
   siteMetadata: {
-    title: 'Blue Frogs',
-    summary: 'just get wet ...',
+    title: 'Crunchy Frogs',
+    summary: 'パチスロ x programming',
     description: 'put down my codes',
     social: {
       twitter: '',
@@ -51,6 +51,14 @@ module.exports = {
       options: {
         name: 'pages',
         path: './content/mdx-pages/',
+      },
+      __key: 'apps',
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pages',
+        path: './content/md-pages/',
       },
       __key: 'pages',
     },

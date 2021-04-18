@@ -1,20 +1,28 @@
 import React, { useState, useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 
-function Calc(games, bb, rb, bbpay, rbpay, base) {
-  return Math.round(bbpay * bb + rbpay * rb - (50 / base) * games)
+function Coins(games, bb, rb) {
+  const grapes = [6.82, 6.76, 6.70, 6.65, 6.60, 6.54]
+  const cherry = 36.3
+  const coins = grapes.map((grape) =>
+    Math.round(
+      (games / 7.3) * 3 +
+        (games / grape) * 7 +
+        (games / cherry ) * 1 +
+        312 * bb +
+        104 * rb -
+        games * 3
+    )
+  )
+  return coins
 }
 
-export default function Coins(props) {
+export default function GojugCoins() {
   const { register, handleSubmit, watch, reset, errors } = useForm()
   const [gamesCount, setGamesCount] = useState(0)
   const [bbCount, setBBCount] = useState(0)
   const [rbCount, setRBCount] = useState(0)
   const onReset = useCallback(() => reset(), [reset])
-  
-  const bbpay = props.bbpayout ? parseInt(props.bbpayout) : 360
-  const rbpay = props.rbpayout ? parseInt(props.rbpayout) : 90
-  const base = props.base ? parseInt(props.base) : 36
 
   const allClear = () => {
     onReset()
@@ -22,7 +30,6 @@ export default function Coins(props) {
     setBBCount(0)
     setRBCount(0)
   }
-
   const onSubmit = (formData) => {
     console.log(watch)
     console.log(formData)
@@ -95,11 +102,24 @@ export default function Coins(props) {
           </dd>
         </dl>
         <dl>
-          <dt>Base Coins: </dt>
+          <dt>Total Probability: </dt>
           <dd>
-            {gamesCount &&
-              Calc(gamesCount, bbCount, rbCount, bbpay, rbpay, base)}
+            {bbCount + rbCount === 0
+              ? Math.round(gamesCount)
+              : Math.round((gamesCount / (bbCount + rbCount)) * 10) / 10}
           </dd>
+        </dl>
+        <dl>
+          {gamesCount === 0
+            ? ''
+            : Coins(gamesCount, bbCount, rbCount).map((coins, key) => {
+                return (
+                  <div key={key}>
+                    <dt>Setting {key + 1} : </dt>
+                    <dd>{coins}</dd>
+                  </div>
+                )
+              })}
         </dl>
         <label className="block">
           <input

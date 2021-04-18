@@ -23,7 +23,9 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     query {
-      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+      allMdx(
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
         edges {
           node {
             slug
@@ -46,6 +48,14 @@ exports.createPages = async ({ graphql, actions }) => {
       allTags: allMdx(limit: 1000) {
         group(field: frontmatter___tags) {
           fieldValue
+        }
+      }
+
+      allApps: allMdx(filter: { frontmatter: { tags: { eq: "app" } } }) {
+        edges {
+          node {
+            slug
+          }
         }
       }
     }
@@ -79,6 +89,17 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve('src/templates/categories-pages.js'),
       context: {
         tag: t.fieldValue,
+      },
+    })
+  })
+
+  // apps
+  result.data.allApps.edges.forEach(({node}) => {
+    createPage({
+      path: `/apps/${node.slug}/`,
+      component: path.resolve('src/templates/post.js'),
+      context: {
+        slug: node.slug,
       },
     })
   })

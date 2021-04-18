@@ -14,7 +14,7 @@ const tw = {
   UL: 'list-disc list-inside my-4 ml-2',
   OL: 'list-decimal my-4 ml-6',
   LI: 'm-0.5',
-  TABLE: 'table-auto border-collapse border w-full mb-4',
+  TABLE: 'table-auto border-collapse border mb-4',
   TH: 'border border-gray-500 p-1 font-bold bg-gray-700',
   TD: 'border border-gray-500 p-1 pr-2 text-right',
   IFRAME: 'w-full',

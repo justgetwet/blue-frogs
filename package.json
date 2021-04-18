@@ -40,13 +40,15 @@
     "postcss": "^8.2.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-google-sheets": "^0.4.0",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.15.1",
     "react-syntax-highlighter": "^15.4.3",
     "remark-capitalize": "^1.1.0",
     "remark-emoji": "^2.1.0",
     "tailwindcss": "^2.0.3",
-    "use-persisted-reducer": "^2.1.0"
+    "use-persisted-reducer": "^2.1.0",
+    "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
     "eslint": "^7.19.0",

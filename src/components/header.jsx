@@ -38,12 +38,12 @@ export default function Header() {
             <h1 className="text-2xl text-dclCyan">{title}</h1>
           </Link>
           <span className="text-lg">{summary}</span>
-          <a className="ml-2" href={social.github}>
+          {/* <a className="ml-2" href={social.github}>
             <Github />
           </a>
           <a className="ml-2" href={social.twitter}>
             <Twitter />
-          </a>
+          </a> */}
         </div>
       </div>
   )

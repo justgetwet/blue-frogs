@@ -3,6 +3,7 @@ import Layout from '../components/layout'
 import Latest from '../components/latest'
 import Archive from '../components/archive'
 import Categories from '../components/categories'
+import Apps from '../components/apps'
 import SEO from '../components/seo'
 
 export default () => (
@@ -11,5 +12,6 @@ export default () => (
     <Latest />
     <Categories />
     <Archive />
+    <Apps />
   </Layout>
 )
